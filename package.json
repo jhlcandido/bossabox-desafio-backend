@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
+    "dev": "cross-env NODE_ENV=dev npm run start",
+    "build": "mkdir ./dist && sucrase ./src -d ./dist/src --transforms typescript,imports && cp ./package.json ./dist && cp ./.env ./dist && cp -R ./src/config ./dist/src && cp -R ./src/entities ./dist/src && cp ./.sequelizerc ./dist",
+    "migrations:run": "npx sequelize db:migrate"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.27",
+    "@types/sequelize": "^4.28.9",
+    "@types/validator": "^13.1.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "sequelize-cli": "^6.2.0",
+    "ts-node-dev": "^1.0.0-pre.57"
+  }
+}
