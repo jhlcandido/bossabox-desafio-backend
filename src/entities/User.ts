@@ -1,4 +1,4 @@
-import { IUser } from "./interfaces/IUser";
+import IUser from "./interfaces/IUser";
 
 import {
   Model,
@@ -17,8 +17,7 @@ import Tool from "./Tool";
 
 interface IUserCreationAttributes extends Optional<IUser, "id"> {}
 
-export class User extends Model<IUser, IUserCreationAttributes>
-  implements IUser {
+class User extends Model<IUser, IUserCreationAttributes> implements IUser {
   public id!: number; // Note that the `null assertion` `!` is required in strict mode.
   public name!: string;
   public email!: string;
@@ -47,14 +46,32 @@ User.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "campo não pode ser null",
+        },
+      },
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isEmail: {
+          msg: "campo deve ser um e-mail válido",
+        },
+        notNull: {
+          msg: "campo não pode ser null",
+        },
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "campo não pode ser null",
+        },
+      },
     },
   },
   {
@@ -70,3 +87,5 @@ User.hasMany(Tool, {
   foreignKey: "user_id",
   as: "tools", // this determines the name in `associations`!
 });
+
+export default User;

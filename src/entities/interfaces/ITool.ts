@@ -1,5 +1,12 @@
-export interface ITool {
+import ITag from "./ITag";
+
+interface ITool {
   id: number;
-  name: string;
+  title: string;
+  link: string;
+  description: string;
   user_id: number;
+  tags?: ITag[] | string[];
 }
+
+export default ITool;
