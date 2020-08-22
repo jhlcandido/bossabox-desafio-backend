@@ -12,7 +12,7 @@ class MysqlToolsRepository implements IToolsRepository {
     });
 
     const _tools = tools.map((tool) => ({
-      ...tool.get({ plan: true }),
+      ...tool.get(),
       tags: tool.tags?.map((tag) => tag.name),
     }));
 
