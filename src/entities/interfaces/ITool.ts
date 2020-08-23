@@ -6,7 +6,7 @@ interface ITool {
   link: string;
   description: string;
   user_id: number;
-  tags?: ITag[] | string[];
+  tags?: any;
 }
 
 export default ITool;

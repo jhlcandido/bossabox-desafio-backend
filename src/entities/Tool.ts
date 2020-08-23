@@ -33,7 +33,7 @@ class Tool extends Model<ITool, IToolCreationAttributes> implements ITool {
   public createTag!: HasManyCreateAssociationMixin<Tag>;
 
   public static associations: {
-    projects: Association<Tool, Tag>;
+    tags: Association<Tool, Tag>;
   };
 }
 

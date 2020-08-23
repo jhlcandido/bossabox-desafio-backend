@@ -7,7 +7,8 @@
     "start": "tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "dev": "cross-env NODE_ENV=dev npm run start",
     "build": "mkdir ./dist && sucrase ./src -d ./dist/src --transforms typescript,imports && cp ./package.json ./dist && cp ./.env ./dist && cp -R ./src/config ./dist/src && cp -R ./src/entities ./dist/src && cp ./.sequelizerc ./dist",
-    "migrations:run": "npx sequelize db:migrate"
+    "migrations:run": "npx sequelize db:migrate",
+    "test": "jest"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.0",
@@ -19,15 +20,22 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.10",
     "@types/node": "^14.0.27",
     "@types/sequelize": "^4.28.9",
     "@types/validator": "^13.1.0",
+    "babel-jest": "^26.3.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
+    "jest": "^26.4.2",
     "sequelize-cli": "^6.2.0",
     "sucrase": "^3.15.0",
+    "ts-jest": "^26.2.0",
     "ts-node-dev": "^1.0.0-pre.57"
   }
 }

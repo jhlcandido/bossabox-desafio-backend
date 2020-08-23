@@ -1,5 +1,5 @@
-import e, { Request, Response } from "express";
-import { UsersCases } from "../useCases/usersCases";
+import { Request, Response } from "express";
+import UsersCases from "../useCases/usersCases";
 
 export default class SessionController {
   constructor(private usersCases: UsersCases) {}

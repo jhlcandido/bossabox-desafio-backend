@@ -9,12 +9,12 @@ require("dotenv").config({
   path,
 });
 
-import express from "express";
+import express, { Express } from "express";
 import { router } from "./routes";
 import cors from "cors";
 
 class AppController {
-  express: any;
+  express: Express;
 
   constructor() {
     this.express = express();

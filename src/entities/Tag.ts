@@ -1,6 +1,5 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "./index";
-import { Optional } from "sequelize/types";
 
 import ITag from "./interfaces/ITag";
 
