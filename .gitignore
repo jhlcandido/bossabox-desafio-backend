@@ -1,2 +1,5 @@
 node_modules
 *.lock
+.dev.env
+.test.env
+dist

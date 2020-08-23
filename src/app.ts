@@ -9,6 +9,8 @@ require("dotenv").config({
   path,
 });
 
+console.log(`env: ${path}`);
+
 import express, { Express } from "express";
 import { router } from "./routes";
 import cors from "cors";
