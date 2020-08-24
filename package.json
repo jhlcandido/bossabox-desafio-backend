@@ -6,6 +6,7 @@
   "scripts": {
     "build": "mkdir ./dist && sucrase ./src -d ./dist/src --transforms typescript,imports && cp ./package.json ./dist && cp ./.env ./dist && cp -R ./src/config ./dist/src && cp -R ./src/entities ./dist/src && cp ./.sequelizerc ./dist",
     "startProd": "cross-env NODE_ENV=prod node ./dist/src/server.js",
+    "prestart": "npx sequelize db:migrate",
     "start": "cross-env NODE_ENV=prod tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "dev": "cross-env NODE_ENV=dev tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "migrations:run": "npx sequelize db:migrate",
