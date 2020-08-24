@@ -7,7 +7,7 @@ class ToolsController {
 
   async index(req: Request, res: Response) {
     try {
-      const tools = await this.toolsCases.getTools({ user_id: req.id });
+      const tools = await this.toolsCases.getTools({ user_id: req.id! });
 
       return res.status(200).json(tools);
     } catch (error) {
