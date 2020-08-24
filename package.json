@@ -10,8 +10,10 @@
     "start": "cross-env NODE_ENV=prod tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "dev": "cross-env NODE_ENV=dev tsnd --inspect --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "migrations:run": "npx sequelize db:migrate",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
     "test": "cross-env NODE_ENV=test npm run test:run",
     "test:run": "jest",
+    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
     "swagger-autogen": "node src/swagger.ts"
   },
   "dependencies": {

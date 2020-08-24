@@ -1,7 +1,7 @@
 import ITool from "./ITool";
 
 interface IUser {
-  id: number;
+  id?: number;
   name: string;
   email: string;
   password: string;
