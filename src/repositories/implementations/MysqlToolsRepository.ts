@@ -6,10 +6,11 @@ import { sequelize } from "../../entities";
 import ITag from "../../entities/interfaces/ITag";
 
 class MysqlToolsRepository implements IToolsRepository {
-  async getAll(): Promise<ITool[]> {
-    const tools = await Tool.findAll({ 
+  async getAll({ user_id }: { user_id: number }): Promise<ITool[]> {
+    const tools = await Tool.findAll({
       include: [Tool.associations.tags],
       attributes: ["id", "title", "link", "description"],
+      where: { user_id },
     });
 
     const _tools = tools.map((tool) => ({

@@ -4,8 +4,8 @@ import IToolsRepository from "../repositories/IToolsRepository";
 class ToolsCases {
   constructor(private toolsRepository: IToolsRepository) {}
 
-  async getTools(): Promise<ITool[]> {
-    return await this.toolsRepository.getAll();
+  async getTools({ user_id }: { user_id: number }): Promise<ITool[]> {
+    return await this.toolsRepository.getAll({ user_id });
   }
 
   async createTool(tool: ITool): Promise<ITool> {
