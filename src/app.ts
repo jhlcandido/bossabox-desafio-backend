@@ -14,8 +14,8 @@ console.log(`env: ${path}`);
 import express, { Express } from "express";
 import { router } from "./routes";
 import cors from "cors";
-import swaggerUi from 'swagger-ui-express';
-import swaggerFile from './swagger_output.json';
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger_output.json";
 
 class AppController {
   express: Express;
@@ -30,12 +30,14 @@ class AppController {
   middlewares() {
     this.express.use(express.json());
     this.express.use(cors());
-    this.express.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
-
+    this.express.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
   }
 
   routes() {
     this.express.use(router);
+    this.express.use(function (req, res) {
+      res.send(404);
+    });
   }
 }
 

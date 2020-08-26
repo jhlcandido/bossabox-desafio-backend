@@ -1,27 +1,21 @@
-version: 2.1
-orbs:
-  node: circleci/node@1.1
-  heroku: circleci/heroku@1.2.2
+version: 2
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '12.18.3'
+    environment: 
+      IMAGE_NAME: jhlcandido/bossabox-desafio-backend
+    docker:
+      - image: circleci/buildpack-deps:stretch
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-      - run: npm run test
-      
+      - setup_remote_docker
+      - run: 
+          name: Build Docker image
+          command: docker build -t $IMAGE_NAME:latest .
 workflows:
   version: 2
-  build-deploy:
+  build-master:
     jobs:
-      - build
-      - heroku/deploy-via-git:
-          requires:
-            - build # only run deploy-via-git job if the build job has completed
-          filters:
+      - build:
+          filters: 
             branches:
-              only: master # only run deploy-via-git job on master branch
+              ignore: master

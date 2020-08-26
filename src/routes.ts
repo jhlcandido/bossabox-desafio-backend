@@ -8,6 +8,10 @@ import session from "./middleware/session";
 
 const router = express.Router();
 
+// router.get("/", (req: Request, res: Response) =>
+//   res.status(200).send("not found") 
+// );
+
 router.post("/authorize", (req: Request, res: Response) =>
   sessionController.post(req, res)
 );
